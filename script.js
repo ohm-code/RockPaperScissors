@@ -1,6 +1,6 @@
 //rock paper scissors game
 //played from console 
-//Jasper 11/22/21
+//Jasper 11/22/21   
 
 const choices = ['rock', 'paper', 'scissors']
 let playerplay = "playtest";
@@ -9,6 +9,16 @@ let computerWins = 0;
 let playerWins = 0;
 let playerVScomputerString = ""
 
+
+
+   function addImg(x,who){
+       var img =document.createElement('img');
+       img.src = `./images/${x}.png`;
+       console.log(img.src)
+       var block = document.getElementById(who);
+       console.log(block)
+       block.appendChild(img);   
+   }
 
 function computerPlay(){
 
@@ -29,15 +39,14 @@ buttons.forEach((button) => {
 function playRound(){
    computerplay = computerPlay();
    playerplay = this.id;
-   document.getElementById('computerPlay').textContent = computerPlay();
-   document.getElementById('playerPlay').textContent = playerplay;
+   document.getElementById('computerPlay').textContent = "";
+   addImg(computerplay,'computerPlay');
+
+   document.getElementById('playerPlay').textContent = "";
+   addImg(playerplay,'playerPlay');
 
     playerVScomputerString = playerplay + computerplay; //allow switches to work by concat the choices
 
-    //debug code
-    console.log(playerplay)
-    console.log(computerplay)
-   //end debug code
 
     if (String(playerplay) !== "rock" && String(playerplay) !== "paper" && String(playerplay) !== "scissors"){
         alert("invalid play");
@@ -45,33 +54,33 @@ function playRound(){
         return;
     }
     if (playerplay === computerplay){
-        alert("tie");
+        document.getElementById('result').textContent ="tie";
         playAgain()
         return;
     }
     switch(playerVScomputerString){
         case 'rockpaper':
-            alert("paper beats rock, you lose :(")
+            document.getElementById('result').textContent ="rock loses to paper, you lose :(";
             computerWins++
             break;
         case 'rockscissors':
-            alert("rock beats scissors! WINNER")  
+            document.getElementById('result').textContent ="rock beats scissors! WINNER"; 
             playerWins++
             break;  
         case 'paperscissors':  
-            alert("scissors beat paper, maybe you should cut your losses") 
+            document.getElementById('result').textContent ="paper loses to scissors, computer wins"; 
             computerWins++  
             break;
         case 'paperrock':  
-            alert("paper beats rock! that's a wrap") 
+            document.getElementById('result').textContent ="paper beats rock! you beat the computer :)"; 
             playerWins++
             break;
         case 'scissorspaper':
-            alert("scissors beats paper, you really showed the computer")
+            document.getElementById('result').textContent ="scissors beats paper, you beat the computer!";
             playerWins++
             break;
         case 'scissorsrock':  
-            alert("ouch, your scissors was beat up by a rock. better luck next time!")
+            document.getElementById('result').textContent ="Scissors loses to rock :( computer wins";
             computerWins++
             break;
         default:
