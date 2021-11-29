@@ -3,17 +3,11 @@
 //Jasper 11/22/21
 
 const choices = ['rock', 'paper', 'scissors']
-let playerplay = "";
+let playerplay = "playtest";
 let computerplay = "";
 let computerWins = 0;
 let playerWins = 0;
-
-playRound()
-
-function game(){
-    playRound()
-
-}
+let playerVScomputerString = ""
 
 
 function computerPlay(){
@@ -24,21 +18,28 @@ function computerPlay(){
 }
 
 function playAgain(){
-    confirm(`Play Again? 
-The current score is Player: ${playerWins} Computer:${computerWins} `)? playRound():alert(`Thanks for playing!
-The final score is Player: ${playerWins} Computer: ${computerWins}`);  // play again message
-}  
+    }  
+
+const buttons = document.querySelectorAll('div.playerChoices > button'); //assign on click action to rock, paper and scissors buttons
+buttons.forEach((button) => {
+    button.addEventListener('click', playRound
+    );
+});
 
 function playRound(){
-    playerplay =prompt("Will you choose rock, paper, or scissors?","").toLowerCase(); //make case insensitive
-    computerplay = computerPlay();
+   computerplay = computerPlay();
+   playerplay = this.id;
+   document.getElementById('computerPlay').textContent = computerPlay();
+   document.getElementById('playerPlay').textContent = playerplay;
+
     playerVScomputerString = playerplay + computerplay; //allow switches to work by concat the choices
+
     //debug code
-    //console.log(playerplay)
-    //console.log(computerplay)
+    console.log(playerplay)
+    console.log(computerplay)
    //end debug code
 
-    if (playerplay != "rock" && playerplay != "paper" && playerplay != "scissors"){
+    if (String(playerplay) !== "rock" && String(playerplay) !== "paper" && String(playerplay) !== "scissors"){
         alert("invalid play");
         playAgain()
         return;
@@ -77,9 +78,6 @@ function playRound(){
             alert("you must play rock, paper or scissors")
         break;    
     }
-    playAgain();
+       document.getElementById('playerScore').textContent = "Player Wins : " + playerWins;
+       document.getElementById('computerScore').textContent = "Computer Wins : " + computerWins;
 }
-    
-
-
-
