@@ -1,0 +1,44 @@
+body{
+  display: block;
+  background-color: rgba(206, 206, 206, 0.479);
+  margin:auto;
+  max-width: 800px;
+}
+
+h1{
+  text-align: center;
+}
+.gameDisplay{
+  font-size: medium;
+  display:flex;
+  justify-content: space-around;
+  flex: 1;
+}
+#vs{
+  display: flex;
+  align-self: center;
+}
+p{
+  text-align: center;
+}
+h2{
+  text-align: center;
+}
+.playerChoices{
+  display: flex;
+  justify-content: center;
+}
+
+.score{
+  display: flex;
+  justify-content: space-evenly;
+}
+button{
+  padding: 5px;
+  margin: 5px;
+}
+
+img{
+  height: 100px;
+  width: 100px;
+}
